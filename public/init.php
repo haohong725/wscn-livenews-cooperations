@@ -1,15 +1,14 @@
 <?php
 require '../src/config/config.php';
 require '../vendor/autoload.php';
-use components\MySQLi;
 
+use components\MySQLi;
+use components\LivenewsHanlder;
 
 $db = MySQLi::getInstance();
 
-
 $countSql = "SELECT count(*) FROM eva_livenews_news AS n LEFT JOIN eva_livenews_texts AS t ON n.id = t.newsId";
 $count = $db->getVar($countSql);
-
 
 $limit = 100;
 $index = 0;
@@ -26,40 +25,13 @@ SQL;
 
     $data = $db->getData($selectSql);
 
-    insertData($data, $db);
+    insertData($data);
 }
 
-function insertData($data, $db)
+function insertData($data)
 {
+    $livenewsHanlder = LivenewsHanlder::getInstance();
     foreach ($data as $item) {
-        insertItem($item, $db);
+        $livenewsHanlder->createOrUpdate($item);
     }
-}
-
-
-function insertItem($item, $db)
-{
-    $columns = '';
-    $values = '';
-
-    foreach ($item as $k => $v) {
-        $tmp = empty($columns) ? $k : ','.$k;
-        $columns .= $tmp;
-
-        $tmp = empty($values) ? "'$v'" : ','."'$v'";
-        $values .= $tmp;
-    }
-
-
-    $insertSql = <<<SQL
-INSERT INTO livenews ($columns) VALUES ($values);
-SQL;
-
-    /**
-     * @var $db MySQLi
-     */
-    $db->query($insertSql);
-
-    $id = $item['id'];
-    echo "正在初始化实时新闻 : ".$id."\n";
 }
