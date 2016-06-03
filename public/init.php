@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * 初始化脚本
+ */
+
 require '../src/config/config.php';
 require '../vendor/autoload.php';
 

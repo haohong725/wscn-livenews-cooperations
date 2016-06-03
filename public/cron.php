@@ -1,13 +1,16 @@
 <?php
+/**
+ * 拉取实时接口，更新数据
+ */
+
 require '../src/config/config.php';
 require '../vendor/autoload.php';
 use components\LivenewsHanlder;
 
-
 $client = new \GuzzleHttp\Client();
-$res = $client->request('GET', LIVENEWS_URL);
 $livenewsHanlder = LivenewsHanlder::getInstance();
 
+$res = $client->request('GET', LIVENEWS_URL);
 $res = $res->getBody();
 $res = json_decode($res, true);
 $results = $res['results'];
