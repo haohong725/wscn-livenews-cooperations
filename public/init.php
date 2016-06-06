@@ -4,8 +4,7 @@
  * 初始化脚本
  */
 
-require '../src/config/config.php';
-require '../vendor/autoload.php';
+require "requires.php";
 
 use components\MySQLi;
 use components\LivenewsHanlder;

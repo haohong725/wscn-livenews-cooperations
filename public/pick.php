@@ -4,8 +4,8 @@
  * 更新指定时间区间内的数据
  */
 
-require '../src/config/config.php';
-require '../vendor/autoload.php';
+require "requires.php";
+
 use components\LivenewsHanlder;
 
 $livenewsHanlder = LivenewsHanlder::getInstance();

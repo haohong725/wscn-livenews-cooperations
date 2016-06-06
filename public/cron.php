@@ -3,8 +3,8 @@
  * 拉取实时接口，更新数据
  */
 
-require '../src/config/config.php';
-require '../vendor/autoload.php';
+require "requires.php";
+
 use components\LivenewsHanlder;
 
 $client = new \GuzzleHttp\Client();
