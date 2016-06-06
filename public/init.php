@@ -15,7 +15,7 @@ $db = MySQLi::getInstance();
 $countSql = "SELECT count(*) FROM eva_livenews_news AS n LEFT JOIN eva_livenews_texts AS t ON n.id = t.newsId";
 $count = $db->getVar($countSql);
 
-$limit = 100;
+$limit = 300;
 $index = 0;
 
 while ($index < $count) {
