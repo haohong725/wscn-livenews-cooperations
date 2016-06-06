@@ -19,6 +19,7 @@ foreach ($results as $item) {
     $fieldFilter = [
         'id',
         'title',
+        'content',
         'status',
         'type',
         'codeType',
@@ -39,6 +40,9 @@ foreach ($results as $item) {
         'contentFollowup',
         'contentAnalysis'
     ];
+
+    $item = array_merge($item, $item['text']);
+    $item['content'] = $item['contentHtml'];
 
     $item = array_filter($item, function ($v, $k) use ($fieldFilter) {
         if (in_array($k, $fieldFilter)) {

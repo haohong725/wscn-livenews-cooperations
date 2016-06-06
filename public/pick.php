@@ -30,6 +30,7 @@ function createOrUpdate($livenewsList)
     $fieldFilter = [
         'id',
         'title',
+        'content',
         'status',
         'type',
         'codeType',
@@ -54,6 +55,7 @@ function createOrUpdate($livenewsList)
     $livenewsHanlder = LivenewsHanlder::getInstance();
     foreach ($livenewsList as $v) {
         $item = array_merge($v, $v['text']);
+        $item['content'] = $item['contentHtml'];
 
         $item = array_filter($item, function ($v, $k) use ($fieldFilter) {
             if (in_array($k, $fieldFilter)) {
