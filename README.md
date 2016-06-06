@@ -13,13 +13,13 @@ php5.6 + mysql
 
 
 ####主要有三个脚本文件
-1. public/init.php
-2. public/cron.php
-3. public/pick.php
+1. bin/init.php
+2. bin/cron.php
+3. bin/pick.php
 
 ####脚本简介及脚本使用方法
 
-**public/init.php**
+**bin/init.php**
 
 简介：初始化脚本，导入见闻旧的数据
 
@@ -27,20 +27,20 @@ php5.6 + mysql
 > SOURCE data/init_livenews.sql; SOURCE /data/livenews.sql
 
 运行方法
-> php public/init.php
+> php bin/init.php
 
-**public/cron.php**
+**bin/cron.php**
 简介：同步新数据脚本，加入定时任务，对接口进行轮询。建议1-3分钟执行一次
 
 运行方法
-> php public/cron.php
+> php bin/cron.php
 
-**public/pick.php**
+**bin/pick.php**
 简介：补充数据，用来补充缺漏的数据，传入时间戳参数
 运行方法  
-> php public/pick.php {start} {end}
+> php bin/pick.php {start} {end}
 
 示例
->php public/pick.php 1451577600 1452441600    #同步2016-01-01到2016-01-10的数据
+>php bin/pick.php 1451577600 1452441600    #同步2016-01-01到2016-01-10的数据
 
->php public/pick.php   #不填参数，默认同步一个星期前到今天的数据
+>php bin/pick.php   #不填参数，默认同步一个星期前到今天的数据
