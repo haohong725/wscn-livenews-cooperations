@@ -10,8 +10,8 @@ use components\LivenewsHanlder;
 
 $livenewsHanlder = LivenewsHanlder::getInstance();
 
-$start = $argv[1];
-$end = $argv[2];
+$start = isset($argv[1])?$argv[1]:time()-7*24*3600;
+$end = isset($argv[2])?$argv[2]:time();
 $limit = 100;
 
 do {
