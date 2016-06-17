@@ -14,6 +14,7 @@ class MySQLi
 	function connect($host, $user, $password, $dbname)
 	{
 		$conn = mysqli_connect($host, $user, $password, $dbname);
+		mysqli_set_charset($conn, "utf8");
 		$this->conn = $conn;
 	}
 
