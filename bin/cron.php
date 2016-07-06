@@ -24,7 +24,7 @@ foreach ($results as $item) {
         'type',
         'codeType',
         'importance',
-        'craetedAt',
+        'createdAt',
         'updatedAt',
         'imageCount',
         'image',
