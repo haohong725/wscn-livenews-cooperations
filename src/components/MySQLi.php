@@ -30,6 +30,9 @@ class MySQLi
 	function getData($sql, $fetch = 'assoc')
 	{
 		$result = $this->query($sql);
+		if ($result) {
+			return [];
+		}
 		$fetchMethod = 'fetch_'.$fetch;
 
 		$data = [];
